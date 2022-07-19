@@ -8,6 +8,7 @@ function Product({ id, content }) {
   localStorage.setItem("watched", JSON.stringify(currentItem));
   return (
     <Link to={`/detail/${id}`}>
+      <h1>hi</h1>
       <div className="col-md-4">
         <img src={content.url} width="80%" />
         <h4>{content.title}</h4>
