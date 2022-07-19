@@ -9,11 +9,13 @@ import { useState, createContext, useEffect } from "react";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import axios from "axios";
 import Cart from "./routes/Cart.js";
+import { useQuery } from "react-query";
 
 export let Context1 = createContext(); //state 보관함
 
 function App() {
-  //접속을 처음에 하면 useEffect안 코드 실행
+  //접속을 처음에 하면 useEffect안 코드 실행.
+  //새로고침 하면 비워짐.
   useEffect(() => {
     localStorage.setItem("watched", JSON.stringify([]));
   });
@@ -23,6 +25,13 @@ function App() {
 
   let navigate = useNavigate();
   let [btnCnt, setBtnCnt] = useState(1);
+
+  const result = useQuery(["작명"], () =>
+    axios.get(`https://codingapple1.github.io/userdata.json`).then((a) => {
+      console.log("요청됨");
+      return a.data;
+    })
+  );
 
   return (
     <div className="App">
@@ -58,6 +67,10 @@ function App() {
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <Nav className="ms-auto" style={{ color: "white" }}>
+          {result.isLoading ? "로딩중" : result.data.name}
+        </Nav>
+        .
       </Navbar>
 
       <Routes>

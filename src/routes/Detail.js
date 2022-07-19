@@ -30,6 +30,15 @@ function Detail(props) {
   let [detailPage, setDetailPage] = useState("");
   let dispatch = useDispatch();
 
+  //이 컴포넌트가 실행됐을 때 특정 코드 실행. 최근 본 상품 추가하기.
+  useEffect(() => {
+    let currentItem = localStorage.getItem("watched");
+    currentItem = JSON.parse(currentItem);
+    currentItem.push(id);
+    currentItem = new Set(currentItem); //중복제거
+    localStorage.setItem("watched", JSON.stringify(currentItem));
+  }, []);
+
   useEffect(() => {
     let a = setTimeout(() => {
       setUi(false);
