@@ -1,7 +1,29 @@
-.App {
-  text-align: center;
+/* .clr{
+  color:white;
+  background-color: black;
+} */
+.main-bg{
+  height:300px;
+  
+  background-size: cover;
+  background-image: url('http://www.bek.me/files/attach/images/392/14963/nwb_1.jpg');
+  background-position: center;
 }
 
+
+.App {
+  text-align: center;
+  letter-spacing:-0.8px;
+}
+
+.start{
+  opacity: 0;
+}
+.end{
+  opacity:1;
+  transition:opacity 0.5s;
+}
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +57,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
